@@ -1,8 +1,10 @@
 import win32com.client
 import random
+
+# Reads data from excel
 excel = win32com.client.Dispatch("Excel.Application")
 excel.Visible = True
-wb = excel.Workbooks.Open('C:\\Users\\abcd0\\Desktop\\test.xlsx')
+wb = excel.Workbooks.Open('C:\\Users\\username\\Desktop\\test.xlsx') # Location for the dataset  
 ws = wb.ActiveSheet
 
 correct = 0
@@ -25,17 +27,17 @@ class Flash_card:
 
         if user_answer == answer:
             print("That's Correct!")
-            correct += 1
+            correct += 1 # for the correct input, adds count +1 to correct
             print("Total Correct answers:", correct,'\n')
 
-        elif user_answer == "q":
+        elif user_answer == "q": # Quits the program when user inputs "q"
             print("Bye Bye")
-            print("Final Percentage: {:.0%}".format(correct / (correct+wrong)))
+            print("Final Percentage: {:.0%}".format(correct / (correct+wrong))) # Calculates / Prints final percentage
             exit()
 
         else:
             print("That's not correct.")
-            wrong += 1
+            wrong += 1 # Adds count to Wrong answers
             print("Total wrong answers:", wrong,'\n')
 
     def print_menu(self):
@@ -65,5 +67,5 @@ class Flash_card:
 
 
 if __name__ == '__main__':
-    flash = Flash_card(10)
-    flash.run(10)
+    flash = Flash_card(10) # 10 numbers of qs
+    flash.run(10) # 10 numbers of qs
